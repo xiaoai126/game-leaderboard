@@ -1,4 +1,3 @@
-// src/rank/rank.service.ts
 import { Injectable, Logger } from '@nestjs/common';
 import { RedisService } from '@liaoliaots/nestjs-redis';
 import { Server } from 'socket.io';
@@ -28,7 +27,7 @@ export class RankService {
         `Failed to update score: ${error.message}`,
         error.stack,
       );
-      throw error; // 重新拋出錯誤，讓 Controller 處理
+      throw error;
     }
   }
 

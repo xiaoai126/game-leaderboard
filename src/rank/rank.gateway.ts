@@ -1,4 +1,3 @@
-// src/rank/rank.gateway.ts
 import { WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { Server } from 'socket.io';
 import { RankService } from './rank.service';

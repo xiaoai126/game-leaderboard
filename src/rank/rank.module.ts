@@ -1,4 +1,3 @@
-// src/rank/rank.module.ts
 import { Module } from '@nestjs/common';
 import { RankService } from './rank.service';
 import { RankController } from './rank.controller';

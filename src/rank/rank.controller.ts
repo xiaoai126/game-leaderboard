@@ -1,4 +1,3 @@
-// src/rank/rank.controller.ts
 import { Controller, Post, Body, Get, Query } from '@nestjs/common';
 import { RankService } from './rank.service';
 import { UpdateScoreDto } from './dto/update-score.dto';
