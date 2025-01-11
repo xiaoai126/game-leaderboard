@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const socket = io('http://localhost:3000', {
+      reconnection: true, // auto connect
+      reconnectionAttempts: 5, // maximum reconnection attempts before giving up
+      reconnectionDelay: 1000, // initial delay between reconnection attempts (milliseconds)
+      reconnectionDelayMax: 5000, // maximum delay between reconnection attempts (milliseconds)
+      randomizationFactor: 0.5, // randomization factor for reconnection delay
+    });
+
+    socket.on('connect', () => {
+      console.log('already connected');
+    });
+
+    socket.on('disconnect', (reason) => {
+      console.log('disconnected', reason);
+      if (reason === 'io server disconnect') {
+        socket.connect(); // manually try to reconnect
+      }
+    });
+
+    socket.on('reconnect', (attemptNumber) => {
+      console.log('reconnect', attemptNumber);
+    });
+
+    socket.on('reconnect_attempt', (attemptNumber) => {
+      console.log('reconnect_attempt', attemptNumber);
+    });
+
+    socket.on('reconnect_error', (error) => {
+      console.error('reconnect_error', error);
+    });
+
+    socket.on('reconnect_failed', () => {
+      console.log('reconnect_failed');
+    });
+
+    socket.on('rankUpdate', (data) => {
+      console.log('rank update:', data);
+    });
+
+    socket.on('newEntry', (data) => {
+      console.log('new entry:', data);
+    });
+
+    socket.on('rankOverTake', (data) => {
+      console.log('rank over take:', data);
+      alert(
+        `${data.userId} ${data.surpassedUsers.join(',')}！ ${data.rank}，count ${data.score}！`,
+      );
+    });
+  </script>
+</html>
