@@ -6,7 +6,7 @@ import { Server } from 'socket.io';
 @Injectable()
 export class RankService {
   private readonly logger = new Logger(RankService.name);
-  // @ts-expect-error: redis 识别不了 getClient
+  // @ts-expect-error: redis type error
   private redisClient = this.redisService.getClient();
   private io: Server;
 
