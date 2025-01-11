@@ -8,7 +8,7 @@ import { RedisModule } from '@liaoliaots/nestjs-redis';
   imports: [
     RedisModule.forRoot({
       config: {
-        url: 'redis://localhost:6379', // 你的 Redis 連線 URL
+        url: 'redis://localhost:6379',
       },
     }),
   ],
